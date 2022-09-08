@@ -1,0 +1,48 @@
+PRIMER DESAFIO
+class Usuario{
+    constructor(nombre, apellido, libros, mascotas){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.libros = libros;
+        this.mascotas = mascotas;
+    }
+
+    getFullName(){
+        return `${this.nombre} ${this.apellido}`
+    }
+
+    addMascota(string){
+        this.mascotas.push(string)
+    }
+    
+    countMascotas(){
+        return this.mascotas.length
+    }
+    
+    addBook(datoUno, datoDos){
+        this.libros.push({nombre: datoUno, autor: datoDos})
+    }
+
+    getBookNames(){
+        return this.libros.map(libro => libro.nombre)
+    }
+}
+
+let user = new Usuario( "Mario", "Massonnat", [], [] )
+
+// nombre completo
+console.log(user.getFullName());
+
+// mascotas
+user.addMascota("Gatito");
+user.addMascota("Mamut");
+
+// cantidad de mascotas
+console.log(user.countMascotas());
+
+// agregar libro
+user.addBook( "En las montañas de la locura", "H.P. Lovecrat");
+user.addBook( "1984", "George Orwell");
+
+// nombres de libros
+console.log(user.getBookNames());
