@@ -1,4 +1,4 @@
-const Contenedor = require('./segundo-desafio.js')
+const Contenedor = require('./desafio2.js')
 
 const producto = new Contenedor('./productos.txt')
 
@@ -13,7 +13,7 @@ const test = async () => {
     // })
     // console.log(testTwo);
 
-    // const testThree = await producto.getById(2)
+    // const testThree = await producto.getById(3)
     // console.log(testThree);
 
     // const testFour = await producto.deleteById(3)
