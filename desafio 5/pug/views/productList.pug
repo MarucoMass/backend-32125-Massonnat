@@ -1,0 +1,33 @@
+doctype 5
+html(lang="es")
+head
+    title Desafio 5 - PUG
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous")
+body
+    h1.fs-1.ms-3 Example App: Products
+        div.container.mx-auto.m-3.p-3.text-light.bg-secondary
+            h2.fs-2.m-2 Products view 
+            if array.length > 0
+                table.table.table-striped.bg-light 
+                    tr 
+                        th Id
+                        th Title 
+                        th Price
+                        th Thumbnail 
+                    each prod in array 
+                        tr 
+                            td= prod.id 
+                            td= prod.title 
+                            td= prod.price
+                            td
+                                img(class="img-thumbnail" width="200px" height="200px" src=prod.thumbnail)
+            else 
+                div.m-5
+                    h2.fs-4 No products added 
+            a(href="/")
+                button.btn.btn-primary
+                    strong Add product
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous")

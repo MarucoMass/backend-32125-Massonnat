@@ -1,0 +1,28 @@
+<div class="container bg-secondary mx-auto p-3 mt-3 text-light">
+    <h2 class="m-2 fs-2">Products view:</h2>
+    {{#if array}}
+        <table class="table table-striped bg-light">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Thumbnail</th>
+            </tr>
+            {{#each array}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.title}}</td>
+                    <td>$ {{this.price}}</td>
+                    <td><img width="200px" height="200px" class="img-thumbnail" src="{{this.thumbnail}}"></td>
+                </tr>
+            {{/each}}
+        </table>
+    {{ else }}
+        <div class="m-5">
+            <h2 class="fs-4">No products added</h2>
+        </div>
+    {{/if}}
+    <a href="/">
+        <button class="btn btn-primary mb-3"><strong>Add product</strong></button>
+    </a>
+</div>

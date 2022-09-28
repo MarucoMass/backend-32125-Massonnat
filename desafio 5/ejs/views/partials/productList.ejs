@@ -1,0 +1,28 @@
+<div class="container bg-secondary mx-auto p-3 mt-3 text-light">
+    <h2 class="m-2 fs-2">Producs view:</h1>
+    <% if(array.length > 0) { %> 
+        <table class="table table-striped bg-light">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Thumbnail</th>
+            </tr>
+            <% array.forEach( prod => { %>
+                <tr>
+                    <td><%= prod.id%></td>
+                    <td><%= prod.title%></td>
+                    <td>$ <%= prod.price%></td>
+                    <td><img class="images" src="<%= prod.thumbnail%>" width="200px" height="200px"></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } else { %>
+        <div class="m-5">
+            <h2 class="fs-4">No products added</h2>
+        </div>
+    <% } %>
+    <a href="/">
+        <button class="btn btn-primary"><strong>Add product</strong></button>
+    </a>
+</div>
