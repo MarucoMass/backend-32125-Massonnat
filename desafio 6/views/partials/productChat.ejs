@@ -1,0 +1,9 @@
+<div class="container bg-light mx-auto p-3 mt-3">
+    <h2 class="m-2 fs-2 text-secondary">Chat Client:</h2>
+    <form onsubmit="return addMessage(this)" id="formChat">
+        <input type="email" id="username" placeholder="Your email" required/>
+        <input type="text" id="texto" placeholder="Write something..." />
+        <button type="submit" class="btn btn-success"><strong>Send</strong></button>
+    </form>
+    <div id="mensajes" class="text-light d-flex flex-column mt-3"></div>
+  </div>

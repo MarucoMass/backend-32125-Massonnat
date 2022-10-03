@@ -1,0 +1,23 @@
+<div class="container mx-auto mt-3 p-3 bg-secondary text-light">
+    <h2 class="m-2 ">Add Product</h2>
+    <div class="m-4">
+        <form onsubmit="return addProduct(this)">
+            <div class="mb-3">
+                <label for="title" class="form-label"><i><strong>Title:</strong></i></label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label"><i><strong>Price:</strong></i></label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" min="0" step="0.01" class="form-control" id="price" name="price" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="thumbnail" class="form-label"><i><strong>URL Thumbnail:</strong></i></label>
+                <input type="text" class="form-control" id="thumbnail" name="thumbnail" required>
+            </div>
+            <button type="submit" class="btn btn-success"><strong>Send</strong></button>
+        </form>
+    </div>
+</div>
