@@ -1,7 +1,7 @@
 const socket = io.connect();
 const formChat = document.getElementById('formChat')
 
-function addMessage(e) {
+const addMessage = (e) => {
   const mensaje = {
     author: document.getElementById("username").value,
     text: document.getElementById("texto").value,
@@ -12,7 +12,7 @@ function addMessage(e) {
   return false;
 }
 
-function addProduct(e) {
+const addProduct = (e) => {
   const producto = {
     title: document.getElementById("title").value,
     price: document.getElementById("price").value,
@@ -22,7 +22,7 @@ function addProduct(e) {
   return false;
 }
 
-function makeHTML(mensajes) {
+const makeHTML = (mensajes) => {
     return mensajes.map((elem, index) => {
         return `<div class="d-inline-flex ">
               <strong class="text-primary">${elem.author}:</strong>
@@ -32,7 +32,7 @@ function makeHTML(mensajes) {
       })
       .join(" ");
   }
-  function makeHTMLProductos(arrayProductos) {
+ const makeHTMLProductos = (arrayProductos) => {
     if (arrayProductos.length > 0) {
       return arrayProductos.map((elem, index) => {
           return `<tr >
