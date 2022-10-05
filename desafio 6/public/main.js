@@ -52,11 +52,11 @@ const makeHTML = (mensajes) => {
     }
   }
   
-  function render(data) {
+  const render = (data) => {
     const html = makeHTML(data);
     document.getElementById("mensajes").innerHTML = html;
   }
-  function renderProductos(data) {
+  const renderProductos = (data) => {
     const htmlProductos = makeHTMLProductos(data)
     document.getElementById("trProductos").innerHTML = htmlProductos;
   }

@@ -1,7 +1,6 @@
 const express = require("express");
 const { Server: HttpServer } = require("http");
 const { Server: IOServer } = require("socket.io");
-const fs = require('fs')
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -32,9 +31,6 @@ io.on("connection", (socket) => {
   socket.on("nuevoMensaje", mensaje =>{
     mensajes.push(mensaje);
     io.sockets.emit("mensajes", mensajes);
-    
-    const stringifyElements = JSON.stringify(mensajes, null, 3)
-    fs.promises.writeFile("./mensajes.txt", stringifyElements)
 
   })
 

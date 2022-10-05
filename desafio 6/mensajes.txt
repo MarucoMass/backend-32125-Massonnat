@@ -1,7 +1,0 @@
-[
-   {
-      "author": "strangebox.dev@gmail.com",
-      "text": "ssssss",
-      "date": "4/10/2022, 14:26:09"
-   }
-]
