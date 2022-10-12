@@ -1,8 +1,6 @@
-const Api = require('../apis/apiProductos');
 const fs = require('fs');
 
-const api = new Api('./fileSystem/productos.txt')
-class ApiCarrito {
+class Controlador {
     constructor(routeFile){
         this.routeFile = routeFile
     }
@@ -21,15 +19,11 @@ class ApiCarrito {
         }
     }
 
-    async crearCarrito(){
+    async crear(){
         try {
             const array = await this.traerTodo()
-            const carrito = {
-                timestamp: new Date().toLocaleString(),
-                productos: [],
-                id: array.length === 0 ? 1 : array[array.length - 1].id + 1
-            }
-            array.push(carrito);
+            const id = array.length === 0 ? 1 : array[array.length - 1].id + 1
+            array.push(id);
 
             const stringifyCarrito = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyCarrito)
@@ -41,7 +35,7 @@ class ApiCarrito {
         }
     }
 
-    async borrarCarrito(id){
+    async borrarPorId(id){
         try {
             const array = await this.traerTodo()
             const arrayFiltrado = array.filter(elem => elem.id !== id);
@@ -54,28 +48,27 @@ class ApiCarrito {
         }
     }
 
-    async listarCarrito(id){
+    async listarPorId(id){
         try {
             const array = await this.traerTodo()
             const carritoEncontrado = array.find(elem => elem.id === id);
-            console.log(carritoEncontrado.productos)
-            return carritoEncontrado.productos;
+            return carritoEncontrado;
         } catch (error) {
             console.log(`Error al listar los productos del carrito: ${error}`)
             return error;
         }
     }
 
-    async guardarProducto(id, idProducto){
+    async guardar(id, idProducto){
         try {
             const array = await this.traerTodo()
             const carritoEncontrado = array.find(elem => elem.id === id);
 
-            const arrayProductos = await api.traerTodo();
+            const arrayProductos = await api.getAll();
             const producto = arrayProductos.find(elem => elem.id === idProducto)
 
             carritoEncontrado.productos.push(producto);
-            // array.push(carritoEncontrado)
+            array.push(carritoEncontrado)
             const stringifyCarrito = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyCarrito)
 
@@ -106,4 +99,4 @@ class ApiCarrito {
     }
 }
 
-module.exports = ApiCarrito;
+module.exports = Controlador;

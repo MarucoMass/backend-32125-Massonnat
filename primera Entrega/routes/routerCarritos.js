@@ -12,17 +12,42 @@ routerCarritos.post('/', async (req, res) => {
         res.json(error)
     }
 })
-// routerCarritos.delete('/:id', (req, res) => {
-//     res.json('hola')
-// })
-// routerCarritos.get('/:id/productos', (req, res) => {
-//     res.json('hola')
-// })
-// routerCarritos.post('/:id/productos', (req, res) => {
-//     res.json('hola')
-// })
-// routerCarritos.delete('/:id/productos/:id_prod', (req, res) => {
-//     res.json('hola')
-// })
+routerCarritos.delete('/:id', async (req, res) => {
+    try {
+        const id = parseInt(req.params.id)
+        const carrito = await api.borrarCarrito(id)
+        res.json(carrito)
+    } catch (error) {
+        res.json(error)
+    }
+})
+routerCarritos.get('/:id/productos', async (req, res) => {
+    try {
+        const id = parseInt(req.params.id);
+        const carrito = await api.listarCarrito(id);
+        res.json(carrito)
+    } catch (error) {
+        res.json(error);
+    }
+})
+routerCarritos.post('/:id/productos', async (req, res) => {
+    try {
+        const id = parseInt(req.params.id);
+        const body = req.body.id_prod;
+        const carrito = await api.guardarProducto(id, body);
+        res.json(carrito);
+    } catch (error) {
+        res.json(error);
+    }
+})
+routerCarritos.delete('/:id/productos/:id_prod', async (req, res) => {
+    try {
+        const {id, id_prod} = req.params;
+        const carrito = await api.borrarCarritoYProducto(id, id_prod);
+        res.json(carrito);
+    } catch (error) {
+        res.json(error)
+    }
+})
 
 module.exports = routerCarritos;

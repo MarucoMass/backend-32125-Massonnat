@@ -6,7 +6,7 @@ class Api {
     }
     // productsArray = []
     
-   async getAll() {
+   async traerTodo() {
     try {
         const array = await fs.promises.readFile(this.routeFile);
     
@@ -21,9 +21,9 @@ class Api {
     }
     }
 
-   async addProduct(product) {
+   async agregar(product) {
     try {
-        const array = await this.getAll()
+        const array = await this.traerTodo()
         const id = array.length === 0 ? 1 : array[array.length - 1].id + 1
         product.id = id;
         product.timestamp = Date.now();
@@ -40,22 +40,22 @@ class Api {
     }
     }
 
-    async getById(id) {
+    async obtenerPorId(id) {
         try {
-            const array = await this.getAll()
-            const productId = array.find(elem => elem.id === id)
-            return productId
+            const array = await this.traerTodo()
+            const productoId = array.find(elem => elem.id === id)
+            return productoId
         } catch (error) {
             console.log(`Error: ${error}`)
             return error
         }
     }
 
-    async updateProduct(newProduct, id ) {
+    async actualizar(newProduct, id ) {
         try {
-            const array = await this.getAll()
+            const array = await this.traerTodo()
             const productoEncontrado = array.find(elem => elem.id === id)
-            productoEncontrado.timestamp = Date.now();
+            productoEncontrado.timestamp = new Date().toLocaleString();
             productoEncontrado.nombre = newProduct.nombre;
             productoEncontrado.descripcion = newProduct.descripcion;
             productoEncontrado.codigo = newProduct.codigo;
@@ -74,9 +74,9 @@ class Api {
         }
     }
 
-    async deleteProduct(id) {
+    async borrarPorId(id) {
         try {
-            const arraySinBorrar = await this.getAll();
+            const arraySinBorrar = await this.traerTodo();
             const productoBorrado = array.find(elem => elem.id === id);
             const array = arraySinBorrar.filter(elem => elem.id !== id)
 

@@ -8,7 +8,7 @@ const api = new Api('./fileSystem/productos.txt')
 
 routerProductos.get('/', async (req, res) => {
     try {
-        const productos = await api.getAll()
+        const productos = await api.traerTodo()
         res.json(productos);
     } catch (error) {
         res.json(error);
@@ -19,7 +19,7 @@ routerProductos.get('/', async (req, res) => {
 routerProductos.get('/:id', validationId, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const producto = await api.getById(id)
+        const producto = await api.obtenerPorId(id)
         res.json(producto);
     } catch (error) {
         res.json(error);
@@ -32,7 +32,7 @@ routerProductos.post('/', async (req, res) => {
         const producto = {
             ...req.body
         };
-        const productoAgregado = await api.addProduct(producto)
+        const productoAgregado = await api.agregar(producto)
         res.json(productoAgregado);
     } catch (error) { 
         res.json(error);
@@ -46,7 +46,7 @@ routerProductos.put('/:id', validationId, validationAdmin, async (req, res) => {
         const nuevoProducto = await {
         ...req.body
         };
-        const productoModificado = await api.updateProduct(nuevoProducto, id )
+        const productoModificado = await api.actualizar(nuevoProducto, id )
         res.json(productoModificado)
     } catch (error) {
         res.json(error);
@@ -57,7 +57,7 @@ routerProductos.put('/:id', validationId, validationAdmin, async (req, res) => {
 routerProductos.delete('/:id', validationId, validationAdmin, async (req, res) => {
     try {
         const id = parseInt(req.params.id)
-        const productoBorrado = await api.deleteProduct(id)
+        const productoBorrado = await api.borrarPorId(id)
         res.json(productoBorrado)
     } catch (error) {
         res.json(error);
