@@ -1,9 +1,15 @@
 const express = require('express');
 const routerCarritos = express.Router();
-const ApiCarrito = require('../apis/apiCarritos')
 
+// controlador
+const ApiCarrito = require('../apis/apiCarritos')
 const api = new ApiCarrito('./fileSystem/carrito.txt')
 
+// middlewares
+const validationId = require('../middlewares/idMiddleware');
+const validationAdmin = require('../middlewares/adminMiddleware');
+
+// Rutas
 routerCarritos.post('/', async (req, res) => {
     try {
         const carrito = await api.crearCarrito();
@@ -12,7 +18,7 @@ routerCarritos.post('/', async (req, res) => {
         res.json(error)
     }
 })
-routerCarritos.delete('/:id', async (req, res) => {
+routerCarritos.delete('/:id', validationId, async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const carrito = await api.borrarCarrito(id)
@@ -21,7 +27,7 @@ routerCarritos.delete('/:id', async (req, res) => {
         res.json(error)
     }
 })
-routerCarritos.get('/:id/productos', async (req, res) => {
+routerCarritos.get('/:id/productos', validationId, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const carrito = await api.listarCarrito(id);
@@ -30,7 +36,7 @@ routerCarritos.get('/:id/productos', async (req, res) => {
         res.json(error);
     }
 })
-routerCarritos.post('/:id/productos', async (req, res) => {
+routerCarritos.post('/:id/productos', validationId, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const body = req.body.id_prod;
@@ -40,9 +46,10 @@ routerCarritos.post('/:id/productos', async (req, res) => {
         res.json(error);
     }
 })
-routerCarritos.delete('/:id/productos/:id_prod', async (req, res) => {
+routerCarritos.delete('/:id/productos/:id_prod', validationId, async (req, res) => {
     try {
-        const {id, id_prod} = req.params;
+        const id = parseInt(req.params.id);
+        const id_prod = parseInt(req.params.id_prod);
         const carrito = await api.borrarCarritoYProducto(id, id_prod);
         res.json(carrito);
     } catch (error) {

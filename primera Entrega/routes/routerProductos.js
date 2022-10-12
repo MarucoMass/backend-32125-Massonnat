@@ -1,11 +1,15 @@
 const express = require('express');
 const routerProductos = express.Router();
+
+// controlador
 const Api = require('../apis/apiProductos');
+const api = new Api('./fileSystem/productos.txt')
+
+// middlewares
 const validationId = require('../middlewares/idMiddleware');
 const validationAdmin = require('../middlewares/adminMiddleware');
 
-const api = new Api('./fileSystem/productos.txt')
-
+// Rutas
 routerProductos.get('/', async (req, res) => {
     try {
         const productos = await api.traerTodo()

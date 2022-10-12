@@ -3,21 +3,18 @@
       "nombre": "heladera",
       "precio": 20000,
       "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
+      "codigo": 100,
+      "stock": 20,
       "id": 1,
-      "timestamp": 1665601708709
+      "timestamp": 1665610763684
    },
    {
-      "nombre": "heladera",
-      "precio": 20000,
+      "nombre": "microondas",
+      "precio": 30000,
       "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
+      "codigo": 100,
+      "stock": 25,
       "id": 2,
-      "timestamp": 1665601712573
-   },
-   {
-      "nombre": "heladera",
-      "precio": 20000,
-      "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
-      "id": 3,
-      "timestamp": 1665601713602
+      "timestamp": "12/10/2022 18:48:18"
    }
 ]

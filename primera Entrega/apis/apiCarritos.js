@@ -75,7 +75,7 @@ class ApiCarrito {
             const producto = arrayProductos.find(elem => elem.id === idProducto)
 
             carritoEncontrado.productos.push(producto);
-            // array.push(carritoEncontrado)
+          
             const stringifyCarrito = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyCarrito)
 
@@ -86,18 +86,19 @@ class ApiCarrito {
         }
     }
 
-    async borrarCarritoYProducto(id, idProducto){
+    async borrarCarritoYProducto(id, id_prod){
         try {
             const array = await this.traerTodo()
             const carritoFiltrado = array.find(elem => elem.id === id);
-            const producto = carritoFiltrado.productos.filter(elem => elem.id !== idProducto);
+            const producto = carritoFiltrado.productos.filter(elem => elem.id !== id_prod);
+           
+            carritoFiltrado.productos = '';
+            carritoFiltrado.productos = producto;
 
-            carritoFiltrado.productos.push(producto)
-            array.push(carritoFiltrado);
-            const stringifyCarrito = JSON.stringify(arrayParseado, null, 3)
+            const stringifyCarrito = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyCarrito)
-            
-            return producto;
+		
+            return carritoFiltrado.productos;
 
         } catch (error) {
             console.log(`Error al borrar el carrito y el producto: ${error}`)

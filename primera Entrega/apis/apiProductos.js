@@ -4,7 +4,6 @@ class Api {
     constructor(routeFile){
         this.routeFile = routeFile
     }
-    // productsArray = []
     
    async traerTodo() {
     try {
@@ -26,7 +25,7 @@ class Api {
         const array = await this.traerTodo()
         const id = array.length === 0 ? 1 : array[array.length - 1].id + 1
         product.id = id;
-        product.timestamp = Date.now();
+        product.timestamp = new Date().toLocaleString();
         array.push(product);
         
         const stringifyArray = JSON.stringify(array, null, 3)
@@ -76,14 +75,13 @@ class Api {
 
     async borrarPorId(id) {
         try {
-            const arraySinBorrar = await this.traerTodo();
-            const productoBorrado = array.find(elem => elem.id === id);
-            const array = arraySinBorrar.filter(elem => elem.id !== id)
+            const array = await this.traerTodo();
+            const arrayFiltrado = array.filter(elem => elem.id !== id)
 
-            const stringifyArray = JSON.stringify(array, null, 3)
+            const stringifyArray = JSON.stringify(arrayFiltrado, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyArray)
 
-            return productoBorrado;
+            return arrayFiltrado;
         } catch (error) {
             console.log(`Error: ${error}`)
             return error
