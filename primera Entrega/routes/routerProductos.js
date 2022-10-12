@@ -4,7 +4,7 @@ const Api = require('../apis/apiProductos');
 const validationId = require('../middlewares/idMiddleware');
 const validationAdmin = require('../middlewares/adminMiddleware');
 
-const api = new Api()
+const api = new Api('./fileSystem/productos.txt')
 
 routerProductos.get('/', async (req, res) => {
     try {
@@ -19,8 +19,8 @@ routerProductos.get('/', async (req, res) => {
 routerProductos.get('/:id', validationId, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const productos = await api.getById(id)
-        res.json(productos);
+        const producto = await api.getById(id)
+        res.json(producto);
     } catch (error) {
         res.json(error);
     }
@@ -29,34 +29,36 @@ routerProductos.get('/:id', validationId, async (req, res) => {
 
 routerProductos.post('/', async (req, res) => {
     try {
-        const product = await {
+        const producto = {
             ...req.body
         };
-        res.json(api.addProduct(product));
+        const productoAgregado = await api.addProduct(producto)
+        res.json(productoAgregado);
     } catch (error) { 
         res.json(error);
     }
     
 });
 
-routerProductos.put('/:id', (req, res) => {
+routerProductos.put('/:id', validationId, validationAdmin, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const newProduct = {
+        const nuevoProducto = await {
         ...req.body
         };
-        api.updateProduct(newProduct, id )
-        res.json(api.getById(id))
+        const productoModificado = await api.updateProduct(nuevoProducto, id )
+        res.json(productoModificado)
     } catch (error) {
         res.json(error);
     }
     
  });
 
-routerProductos.delete('/:id', validationId, async (req, res) => {
+routerProductos.delete('/:id', validationId, validationAdmin, async (req, res) => {
     try {
         const id = parseInt(req.params.id)
-        res.json(api.deleteProduct(id))
+        const productoBorrado = await api.deleteProduct(id)
+        res.json(productoBorrado)
     } catch (error) {
         res.json(error);
     }

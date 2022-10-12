@@ -1,0 +1,52 @@
+[
+   {
+      "nombre": "j",
+      "descripcion": "loremmmmm",
+      "codigo": 151,
+      "stock": 43,
+      "precio": 30000,
+      "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
+      "id": 1,
+      "timestamp": 1665528299829
+   },
+   {
+      "nombre": "m",
+      "descripcion": "loremmmmm",
+      "codigo": 151,
+      "stock": 43,
+      "precio": 30000,
+      "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
+      "id": 2,
+      "timestamp": 1665528467269
+   },
+   {
+      "nombre": "j",
+      "descripcion": "loremmmmm",
+      "codigo": 151,
+      "stock": 43,
+      "precio": 30000,
+      "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
+      "id": 3,
+      "timestamp": 1665528448700
+   },
+   {
+      "nombre": "j",
+      "descripcion": "loremmmmm",
+      "codigo": 151,
+      "stock": 43,
+      "precio": 30000,
+      "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
+      "id": 4,
+      "timestamp": 1665528449001
+   },
+   {
+      "nombre": "m",
+      "descripcion": "loremmmmm",
+      "codigo": 151,
+      "stock": 43,
+      "precio": 30000,
+      "foto": "https://ichef.bbci.co.uk/news/640/cpsprodpb/183B1/production/_113494299_gettyimages-489937746.jpg",
+      "id": 2,
+      "timestamp": 1665528467269
+   }
+]

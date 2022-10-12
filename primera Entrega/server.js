@@ -2,6 +2,7 @@ const express = require('express');
 const path= require('path');
 const fs = require('fs')
 const routerProductos = require('./routes/routerProductos');
+const routerCarritos = require('./routes/routerCarritos');
 
 
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 
 app.use("/api/productos", routerProductos);
-// app.use("/api/carrito", routerCarrito);
+app.use("/api/carrito", routerCarritos);
 
 
 
