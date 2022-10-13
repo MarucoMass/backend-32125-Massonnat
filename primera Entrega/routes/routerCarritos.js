@@ -5,9 +5,6 @@ const routerCarritos = express.Router();
 const ApiCarrito = require('../apis/apiCarritos')
 const api = new ApiCarrito('./fileSystem/carrito.txt')
 
-// middlewares
-const validationAdmin = require('../middlewares/adminMiddleware');
-
 // Rutas
 routerCarritos.post('/', async (req, res) => {
     try {
@@ -17,7 +14,7 @@ routerCarritos.post('/', async (req, res) => {
         res.json(error)
     }
 })
-routerCarritos.delete('/:id', validationAdmin, async (req, res) => {
+routerCarritos.delete('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const carrito = await api.borrarCarrito(id)
@@ -26,7 +23,7 @@ routerCarritos.delete('/:id', validationAdmin, async (req, res) => {
         res.json(error)
     }
 })
-routerCarritos.get('/:id/productos', validationAdmin, async (req, res) => {
+routerCarritos.get('/:id/productos', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const carrito = await api.listarCarrito(id);
@@ -35,7 +32,7 @@ routerCarritos.get('/:id/productos', validationAdmin, async (req, res) => {
         res.json(error);
     }
 })
-routerCarritos.post('/:id/productos', validationAdmin, async (req, res) => {
+routerCarritos.post('/:id/productos', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const body = req.body.id_prod;
@@ -45,7 +42,7 @@ routerCarritos.post('/:id/productos', validationAdmin, async (req, res) => {
         res.json(error);
     }
 })
-routerCarritos.delete('/:id/productos/:id_prod', validationAdmin, async (req, res) => {
+routerCarritos.delete('/:id/productos/:id_prod', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const id_prod = parseInt(req.params.id_prod);

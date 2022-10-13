@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas
 app.use("/api/productos", routerProductos);
 app.use("/api/carrito", routerCarritos);
-app.use("/", routerError);
+app.use("*", routerError);
 
 // servidor //
 const server = app.listen(process.env.PORT || 8080, () => {
