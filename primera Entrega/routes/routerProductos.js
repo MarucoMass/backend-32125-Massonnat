@@ -30,7 +30,7 @@ routerProductos.get('/:id', async (req, res) => {
     
 });
 
-routerProductos.post('/', async (req, res) => {
+routerProductos.post('/', validationAdmin, async (req, res) => {
     try {
         const producto = {
             ...req.body
