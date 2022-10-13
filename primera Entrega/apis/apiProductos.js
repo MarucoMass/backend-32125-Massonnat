@@ -64,7 +64,6 @@ class Api {
             productoEncontrado.precio = newProduct.precio;
             productoEncontrado.stock = newProduct.stock;
 
-
             const stringifyArray = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyArray)
 
