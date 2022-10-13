@@ -43,10 +43,12 @@ class Api {
         try {
             const array = await this.traerTodo()
             const productoId = array.find(elem => elem.id === id)
-            return productoId
+            const booleano = productoId ? productoId : { error : 'el ID que buscas no se encuentra en este arreglo' }
+            return booleano;
         } catch (error) {
             console.log(`Error: ${error}`)
             return error
+            
         }
     }
 
@@ -61,12 +63,13 @@ class Api {
             productoEncontrado.foto = newProduct.foto;
             productoEncontrado.precio = newProduct.precio;
             productoEncontrado.stock = newProduct.stock;
-            array.push(productoEncontrado)
+
 
             const stringifyArray = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyArray)
 
-            return productoEncontrado;
+            const booleano = productoEncontrado ? productoEncontrado : { error : 'el ID que buscas no se encuentra en este arreglo' }
+            return booleano;
         } catch (error) {
             console.log(`Error: ${error}`)
             return error
@@ -77,11 +80,13 @@ class Api {
         try {
             const array = await this.traerTodo();
             const arrayFiltrado = array.filter(elem => elem.id !== id)
+            const productoEncontrado = array.find(elem => elem.id === id)
 
             const stringifyArray = JSON.stringify(arrayFiltrado, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyArray)
 
-            return arrayFiltrado;
+            const booleano = productoEncontrado ? arrayFiltrado : { error : 'el ID que buscas no se encuentra en este arreglo' }
+            return booleano;
         } catch (error) {
             console.log(`Error: ${error}`)
             return error

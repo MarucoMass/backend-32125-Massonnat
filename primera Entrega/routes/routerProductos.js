@@ -6,7 +6,6 @@ const Api = require('../apis/apiProductos');
 const api = new Api('./fileSystem/productos.txt')
 
 // middlewares
-const validationId = require('../middlewares/idMiddleware');
 const validationAdmin = require('../middlewares/adminMiddleware');
 
 // Rutas
@@ -20,7 +19,7 @@ routerProductos.get('/', async (req, res) => {
   
 });
 
-routerProductos.get('/:id', validationId, async (req, res) => {
+routerProductos.get('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const producto = await api.obtenerPorId(id)
@@ -44,7 +43,7 @@ routerProductos.post('/', async (req, res) => {
     
 });
 
-routerProductos.put('/:id', validationId, validationAdmin, async (req, res) => {
+routerProductos.put('/:id', validationAdmin, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const nuevoProducto = await {
@@ -58,7 +57,7 @@ routerProductos.put('/:id', validationId, validationAdmin, async (req, res) => {
     
  });
 
-routerProductos.delete('/:id', validationId, validationAdmin, async (req, res) => {
+routerProductos.delete('/:id', validationAdmin, async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const productoBorrado = await api.borrarPorId(id)

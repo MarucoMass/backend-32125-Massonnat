@@ -45,9 +45,13 @@ class ApiCarrito {
         try {
             const array = await this.traerTodo()
             const arrayFiltrado = array.filter(elem => elem.id !== id);
+            const carritoEncontrado = array.find(elem => elem.id === id)
+
             const stringifyCarrito = JSON.stringify(arrayFiltrado, null, 3);
             await fs.promises.writeFile(this.routeFile, stringifyCarrito);
-            return arrayFiltrado;
+
+            const booleano = carritoEncontrado ? arrayFiltrado : { error : 'el ID que buscas no se encuentra en este arreglo' }
+            return booleano;
         } catch (error) {
             console.log(`Error al borrar el carrito: ${error}`)
             return error;
@@ -58,8 +62,9 @@ class ApiCarrito {
         try {
             const array = await this.traerTodo()
             const carritoEncontrado = array.find(elem => elem.id === id);
-            console.log(carritoEncontrado.productos)
-            return carritoEncontrado.productos;
+
+            const booleano = carritoEncontrado ? carritoEncontrado.productos : { error : 'el ID que buscas no se encuentra en este arreglo' }
+            return booleano;
         } catch (error) {
             console.log(`Error al listar los productos del carrito: ${error}`)
             return error;
@@ -78,8 +83,9 @@ class ApiCarrito {
           
             const stringifyCarrito = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyCarrito)
-
-            return carritoEncontrado.productos;
+            
+            const booleano = carritoEncontrado && producto ? carritoEncontrado.productos : { error : 'el/los ID/s que buscas no se encuentra en este arreglo' }
+            return booleano;
         } catch (error) {
             console.log(`Error al agregar al carrito: ${error}`)
             return error;
@@ -90,6 +96,7 @@ class ApiCarrito {
         try {
             const array = await this.traerTodo()
             const carritoFiltrado = array.find(elem => elem.id === id);
+            const productoBorrado = carritoFiltrado.productos.find(elem => elem.id === id_prod);
             const producto = carritoFiltrado.productos.filter(elem => elem.id !== id_prod);
            
             carritoFiltrado.productos = '';
@@ -97,9 +104,9 @@ class ApiCarrito {
 
             const stringifyCarrito = JSON.stringify(array, null, 3)
             await fs.promises.writeFile(this.routeFile, stringifyCarrito)
-		
-            return carritoFiltrado.productos;
 
+            const booleano = carritoFiltrado && productoBorrado ? carritoFiltrado.productos : { error : 'el/los ID/s que buscas no se encuentra en este arreglo' }
+            return booleano;
         } catch (error) {
             console.log(`Error al borrar el carrito y el producto: ${error}`)
             return error;
