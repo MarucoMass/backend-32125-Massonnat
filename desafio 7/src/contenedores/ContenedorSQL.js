@@ -8,31 +8,59 @@ class ContenedorSQL {
     }
 
     async listar(id) {
-        return this.knex.from(this.tabla).where('id', id).select('*');
+        try {
+            return this.knex.from(this.tabla).where('id', id).select('*');
+        } catch (error) {
+            return { 'Error': error}
+        }
     }
 
     async listarAll() {
-        return this.knex(`${this.tabla}`).select('*');
+        try {
+            return this.knex(`${this.tabla}`).select('*');
+        } catch (error) {
+            return { 'Error': error}
+        }
     }
 
     async guardar(elem) {
-        return await this.knex(this.tabla).insert(elem);
+        try {
+            return await this.knex(this.tabla).insert(elem);
+        } catch (error) {
+            return { 'Error': error}
+        }
     }
 
     async actualizar(elem, id) {
-        return this.knex.update(elem).where('id', id)
+        try {
+            return this.knex.update(elem).where('id', id)
+        } catch (error) {
+            return { 'Error': error}
+        }
     }
 
     async borrar(id) {
-        return this.knex.from(this.tabla).where('id', id).del();
+        try {
+            return this.knex.from(this.tabla).where('id', id).del();
+        } catch (error) {
+            return { 'Error': error}
+        }
     }
 
     async borrarAll() {
-        return this.knex.from(this.tabla).del();
+        try {
+            return this.knex.from(this.tabla).del();
+        } catch (error) {
+            return { 'Error': error}
+        }
     }
 
     async desconectar() {
-        this.knex.close();
+        try {
+            this.knex.close();
+        } catch (error) {
+            return { 'Error': error}
+        }
     }
 }
 
