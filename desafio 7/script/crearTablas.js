@@ -1,41 +1,45 @@
-const knex = require('knex');
-const config = require('../src/config');
+import knex from 'knex'
+import config from '../src/config.js'
 
-async function tablaProductos() {
+// async function tablaProductos() {
+    const mariaDbClient = knex(config.mariaDb)
     try {
-        const mariaDbClient = await knex(config.mariaDb)
-    
-        mariaDbClient.schema.createTable('productos', table => {
-                table.increments('id')
+        await mariaDbClient.schema.dropTableIfExists('productos')
+        await mariaDbClient.schema.createTable('productos', table => {
+                table.increments('id').primary()
                 table.string('title').notNullable()
-                table.float('price').notNullable()
-                table.string('thumbnail').notNullable()
+                table.float('price')
+                table.string('thumbnail')
          })
     
         console.log('tabla productos en mariaDb creada con éxito')
     } catch (error) {
         console.log('error al crear tabla productos en mariaDb')
         console.log(error)
+    } finally {
+        await mariaDbClient.destroy()
     }
-}
+// }
 
 
-async function tablaMensajes() {
+// async function tablaMensajes() {
+    const sqliteClient = knex(config.sqlite3)
     try {
-        const sqliteClient = await knex(config.sqlite)
-    
-        sqliteClient.schema.createTable('mensajes', table => {
-            table.increments('id')
-                table.string('email').notNullable()
-                table.timestamp('hora').defaultTo(sqliteKnex.fn.now());
-                table.string('mensaje').notNullable()
+        await sqliteClient.schema.dropTableIfExists('mensajes')
+        await sqliteClient.schema.createTable('mensajes', table => {
+                table.increments('id').primary()
+                table.string('author').notNullable()
+                table.timestamp('date').defaultTo(sqliteKnex.fn.now());
+                table.string('text')
         })
     
         console.log('tabla mensajes en sqlite3 creada con éxito')
     } catch (error) {
         console.log('error al crear tabla mensajes en sqlite3')
+    } finally {
+        await sqliteClient.destroy()
     }
-}
+// }
 
-tablaProductos();
-tablaMensajes();
+// tablaProductos();
+// tablaMensajes();

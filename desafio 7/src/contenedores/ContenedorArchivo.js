@@ -1,5 +1,4 @@
-const fs = require('fs');
-
+import { fs } from 'fs'
 class ContenedorArchivo {
     constructor(ruta) {
         this.ruta = ruta;

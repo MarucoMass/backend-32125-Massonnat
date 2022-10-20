@@ -1,5 +1,11 @@
-const config = {
-
+export default {
+    sqlite3: {
+        client: 'sqlite3',
+        connection: {
+            filename: './db/ecommerce.sqlite'
+        },
+        useNullAsDefault: true
+    },
     mariaDb: {
         client: 'mysql',
         connection: {
@@ -8,17 +14,5 @@ const config = {
             password: '',
             database: 'test'
         }
-    },
-    
-   sqlite: {
-        client: 'sqlite3',
-        connection: {
-            filename: `${__dirname}/DB/ecommerce.sqlite`
-        },
-        useNullAsDefault: true
     }
-    
 }
-
-
-module.exports = { config };

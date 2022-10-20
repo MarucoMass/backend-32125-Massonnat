@@ -1,22 +1,32 @@
-const express = require('express');
-const { Server: HttpServer } = require('http');
-const { Server: IOServer } = require('socket.io');
-const ContenedorSQL = require('./src/contenedores/ContenedorSQL');
-const config = require('./src/config');
+
+import express from 'express'
+
+import { Server as HttpServer } from 'http'
+import { Server as Socket } from 'socket.io'
+
+import ContenedorSQL from './src/contenedores/ContenedorSQL.js'
+
+import config from './src/config.js'
+
+// const express = require('express');
+// const { Server: HttpServer } = require('http');
+// const { Server: IOServer } = require('socket.io');
+// const ContenedorSQL = require('./contenedores/ContenedorSQL');
+// const config = require('./config');
 
 // instancia de servidor y socket
-const app = express();
-const httpServer = new HttpServer(app);
-const io = new IOServer(httpServer);
+const app = express()
+const httpServer = new HttpServer(app)
+const io = new Socket(httpServer)
 
 // instancia de api Contenedores
 const productosApi = new ContenedorSQL(config.mariaDb, 'productos');
-const mensajesApi = new ContenedorSQL(config.sqlite, 'mensajes');
+const mensajesApi = new ContenedorSQL(config.sqlite3, 'mensajes');
 
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static('public'));
 
 //seteo el motor de plantillas
 app.set('view engine', 'ejs');
@@ -48,7 +58,7 @@ io.on('connection', async socket => {
 
 
 // servidor //
-const PORT = 8080 || process.env.PORT;
+const PORT = 8080;
 const connectedServer = httpServer.listen(PORT, () => {
   console.log(
     `Servidor Http con Websockets escuchando en el puerto ${
