@@ -8,11 +8,7 @@ import ContenedorSQL from './src/contenedores/ContenedorSQL.js'
 
 import config from './src/config.js'
 
-// const express = require('express');
-// const { Server: HttpServer } = require('http');
-// const { Server: IOServer } = require('socket.io');
-// const ContenedorSQL = require('./contenedores/ContenedorSQL');
-// const config = require('./config');
+import router from './rutas/rutas'
 
 // instancia de servidor y socket
 const app = express()
@@ -32,6 +28,8 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // Ruta
+app.use('api/productos', router)
+
 app.get('/', (req, res) => {
   res.render('pages/main');
 });
