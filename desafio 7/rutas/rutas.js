@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import ContenedorSQL from './src/contenedores/ContenedorSQL.js'
-import config from './src/config.js'
+import ContenedorSQL from '../src/contenedores/ContenedorSQL'
+import config from '../src/config'
 
 const router = Router()
 const api = new ContenedorSQL(config.mariaDb, 'productos');
