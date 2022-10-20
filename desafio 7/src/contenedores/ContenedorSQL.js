@@ -9,7 +9,7 @@ class ContenedorSQL {
 
     async listar(id) {
         try {
-            return this.knex.from(this.tabla).where('id', id).select('*');
+            return await this.knex.from(this.tabla).where('id', id).select('*');
         } catch (error) {
             return { 'Error': error}
         }
@@ -17,7 +17,7 @@ class ContenedorSQL {
 
     async listarAll() {
         try {
-            return this.knex(`${this.tabla}`).select('*');
+            return await this.knex(`${this.tabla}`).select('*');
         } catch (error) {
             return { 'Error': error}
         }
@@ -33,7 +33,7 @@ class ContenedorSQL {
 
     async actualizar(elem, id) {
         try {
-            return this.knex.update(elem).where('id', id)
+            return await this.knex.update(elem).where('id', id)
         } catch (error) {
             return { 'Error': error}
         }
@@ -41,7 +41,7 @@ class ContenedorSQL {
 
     async borrar(id) {
         try {
-            return this.knex.from(this.tabla).where('id', id).del();
+            return await this.knex.from(this.tabla).where('id', id).del();
         } catch (error) {
             return { 'Error': error}
         }
@@ -49,7 +49,7 @@ class ContenedorSQL {
 
     async borrarAll() {
         try {
-            return this.knex.from(this.tabla).del();
+            return await this.knex.from(this.tabla).del();
         } catch (error) {
             return { 'Error': error}
         }
@@ -57,7 +57,7 @@ class ContenedorSQL {
 
     async desconectar() {
         try {
-            this.knex.close();
+           await this.knex.close();
         } catch (error) {
             return { 'Error': error}
         }
