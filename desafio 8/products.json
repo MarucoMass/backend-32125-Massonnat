@@ -1,0 +1,71 @@
+[{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f69"
+  },
+  "title": "Lavarropas",
+  "price": 5000,
+  "thumbnail": "https://img.freepik.com/foto-gratis/lavadora-diseno-interior-sala-lavanderia-minima_53876-145501.jpg?w=996&t=st=1666320553~exp=1666321153~hmac=0a60c3e7466950ebdae9e9adf35205117d537ff0abe9231a0102b0fa9cef2bb7"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f6a"
+  },
+  "title": "Heladera",
+  "price": 670,
+  "thumbnail": "https://img.freepik.com/foto-gratis/instalaciones-cocina-imagen-heladera-comida-adentro_259150-58057.jpg?w=996&t=st=1666320705~exp=1666321305~hmac=f8cc0ae8e8fd3297e0a3fdd8dfe0f992df5925ddddb6f67d5e071ca59dce82a8"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f6b"
+  },
+  "title": "Horno",
+  "price": 580,
+  "thumbnail": "https://img.freepik.com/foto-gratis/hombre-poniendo-pizza-horno-pizzeria_1303-25279.jpg?w=996&t=st=1666320782~exp=1666321382~hmac=c60d5bdb3eeeecdbf6e6d8b5993e9ac9b102ec6279c9044803219c428b03203a"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f6c"
+  },
+  "title": "Microondas",
+  "price": 4990,
+  "thumbnail": "https://img.freepik.com/foto-gratis/horno-microondas-aislado-blanco_93675-128177.jpg?w=996&t=st=1666320831~exp=1666321431~hmac=e5902b865bd1d73c78390bcd251694ef7fee635b8106126e29e06d5dd4ab6c07"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f6d"
+  },
+  "title": "Ventilador",
+  "price": 1200,
+  "thumbnail": "https://img.freepik.com/foto-gratis/empresario-relajante-oficina_1098-21722.jpg?w=996&t=st=1666320913~exp=1666321513~hmac=7e1f1374c52d0012ea2ecbd35ef4e4f69039ecdb5488ddb2d8085d14d89698f7"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f6e"
+  },
+  "title": "Aire acondicionado",
+  "price": 1000,
+  "thumbnail": "https://img.freepik.com/foto-gratis/acondicionador-aire-montado-pared-blanca_53876-128235.jpg?w=996&t=st=1666320955~exp=1666321555~hmac=37fd0016969ad491305724f151d09c5a918fe966bae7a5c0d65054e30d653e48"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f6f"
+  },
+  "title": "Televisor",
+  "price": 3500,
+  "thumbnail": "https://img.freepik.com/foto-gratis/maqueta-televisor-montado-pared-sala-estar-pared-blanca-representacion-3d_41470-3279.jpg?w=1060&t=st=1666321011~exp=1666321611~hmac=274fe3ae9cc35abc2a51b9d6f71937db68f83bee9b8d1060b4a85d8f0e22ee51"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f70"
+  },
+  "title": "Caloventor",
+  "price": 2300,
+  "thumbnail": "https://img.freepik.com/foto-gratis/gente-casa-perro-calefactor_23-2149335089.jpg?w=996&t=st=1666321111~exp=1666321711~hmac=a40d94771c1d53cb6ce3412ebc79e7965cb49b0aebcfe5aad59fceec33709387"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f71"
+  },
+  "title": "Máquina de café",
+  "price": 4320,
+  "thumbnail": "https://img.freepik.com/foto-gratis/nueva-maquina-cafe-brillante-cafeteria-lista-comenzar-hacer-cafe_613910-17369.jpg?w=996&t=st=1666321181~exp=1666321781~hmac=e2970e2620266848fee67301209c32a0b7a1b2d7ee35b0901c072eb66c477ef2"
+},{
+  "_id": {
+    "$oid": "635ad6d12d016c3e181c2f72"
+  },
+  "title": "Notebook",
+  "price": 500,
+  "thumbnail": "https://img.freepik.com/foto-gratis/portatil-pantalla-negra-blanco-sobre-mesa-blanca_53876-97915.jpg?w=996&t=st=1666321219~exp=1666321819~hmac=d46ac5d92f2f0ea9deb7c5f0885f5e9afb803b179bfb09b633d0aeb609cee67a"
+}]
