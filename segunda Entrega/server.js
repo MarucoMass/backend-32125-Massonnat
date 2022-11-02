@@ -4,7 +4,7 @@ const { Router } = express
 import {
     productosDao as productosApi,
     carritosDao as carritosApi
-} from './daos/index.js'
+} from './src/daos/index.js'
 
 //------------------------------------------------------------------------
 // instancio servidor

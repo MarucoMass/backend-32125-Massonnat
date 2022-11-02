@@ -1,6 +1,6 @@
 export default {
     fileSystem: {
-        path: './DB'
+        path: './db'
     },
     mongodb: {
         cnxStr: 'mongodb://127.0.0.1:27017/ecommerce',
