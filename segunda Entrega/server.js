@@ -45,7 +45,7 @@ productosRouter.get('/', async (req, res) => {
 
 productosRouter.get('/:id', async (req, res) => {
   try {
-    const id = parseInt(req.params.id)
+    const id = req.params.id
     const productoListado = await productosApi.listar(id)
     res.json(productoListado)
   } catch (error) {
@@ -69,7 +69,7 @@ productosRouter.post('/', soloAdmins, async (req, res) => {
 
 productosRouter.put('/:id', soloAdmins, async (req, res) => {
   try {
-    const id = parseInt(req.params.id)
+    const id = req.params.id
     const body = {
       ...req.body
     }
@@ -83,7 +83,7 @@ productosRouter.put('/:id', soloAdmins, async (req, res) => {
 
 productosRouter.delete('/:id', soloAdmins, async (req, res) => {
   try {
-    const id = parseInt(req.params.id)
+    const id = req.params.id
     await productosApi.borrar(id)
     res.json('Borrado')
   } catch (error) {
@@ -119,7 +119,7 @@ carritosRouter.post('/', async (req, res) => {
 
 carritosRouter.delete('/:id', async (req, res) => {
   try {
-    const id = parseInt(req.params.id)
+    const id = req.params.id
     await carritosApi.borrar(id)
     res.json('Borrado')
   } catch (error) {
@@ -133,7 +133,7 @@ carritosRouter.delete('/:id', async (req, res) => {
 
 carritosRouter.get('/:id/productos', async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const carrito = await carritosApi.listar(id);
     res.json(carrito)
 } catch (error) {
@@ -156,9 +156,9 @@ carritosRouter.post('/:id/productos', async (req, res) => {
 
 carritosRouter.delete('/:id/productos/:idProd', async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const id_prod = parseInt(req.params.id_prod);
-    const carrito = await carritosApi.delete(id, id_prod);
+    const carrito = await carritosApi.borrar(id, id_prod);
     res.json('Borrado');
 } catch (error) {
     res.json(error)
