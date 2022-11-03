@@ -1,4 +1,4 @@
-import { fs } from 'fs'
+import { promises as fs } from 'fs'
 import config from '../config.js'
 
 class ContenedorArchivo {
@@ -21,7 +21,7 @@ class ContenedorArchivo {
 
     async listarAll() {
         try {
-            const array = await fs.promises.readFile(this.routeFile);
+            const array = await fs.readFile(this.routeFile);
         
             const arrayParseado = JSON.parse(array);
     
@@ -43,7 +43,7 @@ class ContenedorArchivo {
             array.push(elem);
             
             const stringifyArray = JSON.stringify(array, null, 3)
-            await fs.promises.writeFile(this.ruta, stringifyArray)
+            await fs.writeFile(this.ruta, stringifyArray)
     
             return elem;
             
@@ -63,7 +63,7 @@ class ContenedorArchivo {
             };
 
             const stringifyArray = JSON.stringify(array, null, 3);
-            await fs.promises.writeFile(this.ruta, stringifyArray);
+            await fs.writeFile(this.ruta, stringifyArray);
 
             const booleano = archivoEncontrado ? archivoEncontrado : { error : 'el ID que buscas no se encuentra en este arreglo' }
             return booleano;
@@ -80,7 +80,7 @@ class ContenedorArchivo {
             const archivoEncontrado = array.find(elem => elem.id === id);
 
             const stringifyArray = JSON.stringify(arrayFiltrado, null, 3);
-            await fs.promises.writeFile(this.ruta, stringifyArray);
+            await fs.writeFile(this.ruta, stringifyArray);
 
             const booleano = archivoEncontrado ? arrayFiltrado : { error : 'el ID que buscas no se encuentra en este arreglo' }
             return booleano;
@@ -93,7 +93,7 @@ class ContenedorArchivo {
     async borrarAll() {
         try {
             // await fs.promises.unlink(this.ruta)
-            await fs.promises.writeFile(this.ruta, []);
+            await fs.writeFile(this.ruta, []);
         } catch (error) {
             console.log(`Error: ${error}`)
             return error
@@ -101,4 +101,4 @@ class ContenedorArchivo {
     }
 }
 
-module.exports = ContenedorArchivo;
+export default ContenedorArchivo;
