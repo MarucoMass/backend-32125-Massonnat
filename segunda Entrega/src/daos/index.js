@@ -10,19 +10,39 @@ switch (eleccionDB) {
         carritosDao = new CarritosDaoArchivo()
         break
     case 'firebase':
-        
+        const { default: ProductosDaoFirebase } = await import('./productos/ProductosDaoFirebase.js')
+        const { default: CarritosDaoFirebase } = await import('./carritos/CarritosDaoFirebase.js')
+
+        productosDao = new ProductosDaoFirebase()
+        carritosDao = new CarritosDaoFirebase()
         break
     case 'mongodb':
-        
+        const { default: ProductosDaoMongoDb } = await import('./productos/ProductosDaoMongoDb.js')
+        const { default: CarritosDaoMongoDb } = await import('./carritos/CarritosDaoMongoDb.js')
+
+        productosDao = new ProductosDaoMongoDb()
+        carritosDao = new CarritosDaoMongoDb()
         break
     case 'mariadb':
-        
+        const { default: ProductosDaoMariaDb } = await import('./productos/ProductosDaoMariaDb.js')
+        const { default: CarritosDaoMariaDb } = await import('./carritos/CarritosDaoMariaDb.js')
+
+        productosDao = new ProductosDaoMariaDb()
+        carritosDao = new CarritosDaoMariaDb()
         break
     case 'sqlite3':
-        
+        const { default: ProductosDaoSQLite } = await import('./productos/ProductosDaoSQLite3.js')
+        const { default: CarritosDaoSQLite } = await import('./carritos/CarritosDaoSQLite3.js')
+
+        productosDao = new ProductosDaoSQLite()
+        carritosDao = new CarritosDaoSQLite()
         break
     default:
-        
+        const { default: ProductosDaoMem} = await import('./productos/ProductosDaoMem.js')
+        const { default: CarritosDaoMem } = await import('./carritos/CarritosDaoMem.js')
+
+        productosDao = new ProductosDaoMem()
+        carritosDao = new CarritosDaoMem()
         break
 }
 
