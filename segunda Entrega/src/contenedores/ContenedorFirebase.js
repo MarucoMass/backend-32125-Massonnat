@@ -2,7 +2,7 @@ import admin from "firebase-admin"
 import config from '../config.js'
 
 admin.initializeApp({
-    credential: admin.credential.cert(config.firebase.path)
+    credential: admin.credential.cert(config.firebase)
 })
 
 const db = admin.firestore();
