@@ -9,7 +9,7 @@ class CarritosDaoMongoDb extends ContenedorMongoDb {
     }
 
     async guardar() {
-       
+        return super.guardar()
     }
 }
 
